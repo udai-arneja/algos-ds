@@ -50,4 +50,21 @@ def heapsort(inputArray):
         heapsize -= 1
     return inputArray
 
-print(heapsort([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]))
+def insertToHeap(inputArray, element):
+    inputArray.append(element)
+    misplacedIndex = len(inputArray)-1
+    parent = int((misplacedIndex-1)/2)
+    while inputArray[parent] < inputArray[misplacedIndex]:
+        tmpEleValue = inputArray[parent]
+        inputArray[parent] = inputArray[misplacedIndex]
+        inputArray[misplacedIndex] = tmpEleValue
+
+        misplacedIndex = parent
+        parent = int((misplacedIndex-1)/2)
+    return inputArray
+
+heapArray = buildHeap([1,2,3,5,6,7,8,9,10,11,12,13,14,15])
+insertedEle = insertToHeap(heapArray, 10)
+# sortedArray = heapsort([1,2,3,5,6,7,8,9,10,11,12,13,14,15,5])
+print(insertedEle)
+# print(sortedArray)
